@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Checkout carta Marte1km — souvenir simbolico.">
+  <title>Acquista con carta — Marte1km</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="checkout-page" data-api-base="/api" data-paypal-sdk-url="https://www.paypal.com/web-sdk/v6/core">
+    <a class="brand" href="index.html"><span class="brand-mark">M</span>marte<span>1km</span></a>
+    <section class="checkout-card" aria-labelledby="checkoutTitle">
+      <p class="eyebrow">SECURE CARD CHECKOUT</p>
+      <h1 id="checkoutTitle">Paga con carta</h1>
+      <p class="checkout-copy">Il pagamento è elaborato da PayPal. I campi carta sono iframe ospitati da PayPal: il nostro server non riceve né salva numero carta o CVV.</p>
+
+      <div class="quantity-row">
+        <div><span class="field-label">QUANTITÀ</span><strong><span id="quantityValue">1</span> km²</strong></div>
+        <div class="quantity-controls" aria-label="Seleziona quantità">
+          <button type="button" id="minusButton" aria-label="Diminuisci quantità">−</button>
+          <output id="quantityOutput">1</output>
+          <button type="button" id="plusButton" aria-label="Aumenta quantità">+</button>
+        </div>
+      </div>
+      <div class="checkout-total"><span>Totale</span><strong id="totalValue">1,00 €</strong></div>
+      <div class="annual-cap"><span>Disponibilità annuale</span><strong id="remainingValue">Caricamento…</strong></div>
+
+      <div id="cardForm" class="card-form" hidden>
+        <div class="field-label">DATI DELLA CARTA</div>
+        <label class="hosted-label">Numero carta<div id="card-number-container" class="hosted-field"></div></label>
+        <div class="hosted-grid"><label class="hosted-label">Scadenza<div id="card-expiry-container" class="hosted-field"></div></label><label class="hosted-label">CVV<div id="card-cvv-container" class="hosted-field"></div></label></div>
+        <label class="hosted-label">Nome del titolare<div id="card-name-container" class="hosted-field"></div></label>
+        <div class="field-label billing-title">INDIRIZZO DI FATTURAZIONE</div>
+        <label class="hosted-label">Indirizzo<input id="billingAddressLine1" autocomplete="billing address-line1"></label>
+        <div class="hosted-grid"><label class="hosted-label">Città<input id="billingAdminArea2" autocomplete="billing address-level2"></label><label class="hosted-label">CAP<input id="billingPostalCode" autocomplete="billing postal-code"></label></div>
+        <div class="hosted-grid"><label class="hosted-label">Provincia/regione<input id="billingAdminArea1" autocomplete="billing address-level1"></label><label class="hosted-label">Paese<input id="billingCountryCode" value="IT" maxlength="2" autocomplete="billing country"></label></div>
+      </div>
+
+      <p id="cardUnavailable" class="checkout-status" hidden></p>
+      <label class="consent-row"><input id="termsConsent" type="checkbox"> <span>Ho letto e accetto i <a href="terms.html" target="_blank" rel="noopener">Termini e Condizioni</a>, l’<a href="privacy.html" target="_blank" rel="noopener">Informativa Privacy</a> e la <a href="cookie.html" target="_blank" rel="noopener">Cookie Policy</a>.</span></label>
+      <label class="consent-row"><input id="digitalConsent" type="checkbox"> <span>Chiedo l’avvio immediato della fornitura digitale e riconosco le condizioni sul diritto di recesso indicate nei Termini.</span></label>
+      <button class="buy-button checkout-submit" id="cardSubmitButton" type="button" disabled>Continua con la carta ↗</button>
+      <button class="fallback-button" id="hostedCheckoutButton" type="button" hidden>Apri checkout PayPal ospitato</button>
+      <p class="checkout-status" id="status" role="status" aria-live="polite"></p>
+      <p class="checkout-note">Carta Visa, Mastercard o American Express quando abilitate da PayPal per il conto e il Paese. L’autenticazione 3-D Secure può essere richiesta.</p>
+    </section>
+  </main>
+  <script type="module" src="checkout.js"></script>
+</body>
+</html>
